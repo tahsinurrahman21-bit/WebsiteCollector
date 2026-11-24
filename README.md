@@ -90,7 +90,7 @@ Use this if there is no release yet, or if you want to change the code.
 **Step 2 — Download Website Collector**
 
 - *Without Git:* on this repository's main page click the green **Code** button → **Download ZIP**. Right-click the ZIP → **Extract All…** into a folder you own (for example `Documents\WebsiteCollector`).
-- *With Git:* `git clone https://github.com/<your-account>/WebsiteCollector.git`
+- *With Git:* `git clone https://github.com/tahsinurrahman21-bit/WebsiteCollector.git`
 
 Make sure `setup.bat` is directly inside the folder you open (not inside another sub-folder).
 
