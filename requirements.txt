@@ -1,0 +1,10 @@
+PySide6>=6.8,<7
+playwright>=1.51,<2
+httpx>=0.28,<1
+beautifulsoup4>=4.13,<5
+lxml>=5.3,<7
+PyMuPDF>=1.25,<2
+python-docx>=1.1,<2
+python-pptx>=1.0,<2
+Pillow>=11,<13
+olefile>=0.47,<1

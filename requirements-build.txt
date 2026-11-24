@@ -1,0 +1,4 @@
+# Extra tools needed only to build the standalone Windows release.
+# Runtime packages are installed from requirements-lock.txt.
+pyinstaller>=6.10,<7
+pyinstaller-hooks-contrib>=2024.8
