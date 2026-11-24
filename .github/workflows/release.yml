@@ -1,0 +1,47 @@
+# Builds the standalone Windows app and attaches it to a GitHub Release.
+#
+# How to use: on GitHub open Releases -> "Draft a new release", create a tag
+# such as v1.1.1 and click "Publish release". This workflow then builds the
+# ZIP on a Windows machine and attaches it to that release (about 10 minutes).
+# You can also start a test build by hand from the Actions tab ("Run workflow");
+# the ZIP is then available under that run's "Artifacts".
+
+name: Build Windows release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build release ZIP
+        shell: pwsh
+        run: ./build_release.ps1 -Python (Get-Command python).Source
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WebsiteCollector-windows-x64
+          path: |
+            release/*.zip
+            release/*.sha256
+
+      - name: Attach to GitHub Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/*.zip
+            release/*.sha256
